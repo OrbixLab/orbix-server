@@ -39,7 +39,7 @@ async function main() {
 
   // Obtener lista de correos a enviar (no unsubscribed y no enviados antes)
   const [rows] = await connection.execute(`
-    SELECT email FROM usuarios
+    SELECT email FROM subscribers
     WHERE unsubscribed = 0
       AND (last_sent IS NULL)
       AND email IS NOT NULL
@@ -83,7 +83,7 @@ async function main() {
 
       // Marcar en la base que ya se envió
       await connection.execute(
-        "UPDATE usuarios SET last_sent = NOW() WHERE email = ?",
+        "UPDATE subscribers SET last_sent = NOW() WHERE email = ?",
         [recipient]
       );
 
