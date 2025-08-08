@@ -65,15 +65,12 @@ async function main() {
     const recipient = row.email;
 
     let mailOptions = {
-      from: EMAIL_USER,
+      from: `"Orbix Team" <${EMAIL_USER}>`,
       to: recipient,
       subject: "Hola desde Orbix 🚀",
       html: `
         <h1>Hola desde Orbix 🚀</h1>
         <p>Este es un correo de prueba.</p>
-        <p style="font-size:12px;color:gray;">
-          Si no querés recibir más correos, <a href="https://tu-dominio.com/unsubscribe?email=${encodeURIComponent(recipient)}">haz clic aquí</a>.
-        </p>
       `
     };
 
